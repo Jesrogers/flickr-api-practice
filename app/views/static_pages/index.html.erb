@@ -1,0 +1,22 @@
+<h1>Home</h1>
+
+<%= form_with url: '/', method: 'get' do |form| %>
+    <%= form.label :id %>
+    <%= form.text_field :id %>
+    <%= form.submit %>
+<% end %>
+
+
+
+<% unless @photos.size.zero? %>
+    <div>
+        <% @photos.each do |p| %>
+        <div>
+            <%= link_to(image_tag(Flickr.url_m(p)), Flickr.url_photopage(p)) %>
+        </div>
+        <% end %>
+    </div>
+<% else %>
+    <h2>This user has no photos</h2>
+<% end %>
+
